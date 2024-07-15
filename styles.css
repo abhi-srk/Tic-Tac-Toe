@@ -1,0 +1,60 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Center the game board */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Styling the title */
+h1 {
+    font-size: 2.5em; /* Increase font size */
+    text-align: center;
+    margin-bottom: 20px; /* Space between title and board */
+    color: #333; /* Font color */
+}
+
+/* Styling the board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px); /* Increased width of each cell */
+    grid-template-rows: repeat(3, 120px); /* Increased height of each cell */
+    gap: 10px; /* Increased gap between cells */
+    background-color: #333; /* Board background color */
+    border-radius: 8px;
+    padding: 10px; /* Padding around the board */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add a shadow */
+}
+
+/* Styling the cells */
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd; /* Default cell background color */
+    font-size: 2.5em; /* Font size of the content inside cells */
+    color: #333; /* Font color */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect on cells */
+.cell:hover {
+    background-color: #ccc; /* Lighter background color on hover */
+}
+
+/* Additional styling for the message area */
+.message {
+    margin-top: 20px; /* Space between board and message */
+    font-size: 1.5em; /* Font size of the message */
+    text-align: center;
+    color: #333; /* Font color */
+}
