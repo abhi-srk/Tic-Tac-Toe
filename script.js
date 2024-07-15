@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (checkWin(currentPlayer)) {
                 messageElement.textContent = `${currentPlayer} wins!`;
                 board.removeEventListener('click', handleClick);
-                setTimeout(resetGame, 20000); // Reset the game after 20 seconds
+                setTimeout(resetGame, 1000); // Reset the game after 20 seconds
             } else if (isDraw()) {
                 messageElement.textContent = `Draw!`;
-                setTimeout(resetGame, 20000); // Reset the game after 20 seconds
+                setTimeout(resetGame, 1000); // Reset the game after 20 seconds
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             }
@@ -55,4 +55,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     board.addEventListener('click', handleClick);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cells = document.querySelectorAll('[data-cell]');
+    const messageElement = document.getElementById('message');
+    const resetButton = document.getElementById('resetButton');
+    const board = document.getElementById('board');
+
+    // Function to reset the game
+    function resetGame() {
+        cells.forEach(cell => {
+            cell.classList.remove('x');
+            cell.classList.remove('o');
+            cell.textContent = '';
+        });
+        messageElement.textContent = '';
+        // You might want to add additional reset logic here
+        // such as resetting game state variables, etc.
+    }
+
+    // Attach event listener to the reset button
+    resetButton.addEventListener('click', resetGame);
+
+    // Example game logic (simplified)
+    cells.forEach(cell => {
+        cell.addEventListener('click', handleClick, { once: true });
+    });
+
+    function handleClick(e) {
+        const cell = e.target;
+        const currentClass = 'x'; // or 'o' based on current turn
+        placeMark(cell, currentClass);
+        // Add game logic here
+    }
+
+    function placeMark(cell, currentClass) {
+        cell.classList.add(currentClass);
+    }
 });
